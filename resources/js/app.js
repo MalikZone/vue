@@ -16,9 +16,12 @@ Vue.use(VueRouter)
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
 
+import Index from './components/Index.vue'
+import Create from './components/Create.vue'
+
 const routes = [
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar }
+    { path: '/', component: Index },
+    { path: '/create', component: Create }
 ]
 
 const router = new VueRouter({
