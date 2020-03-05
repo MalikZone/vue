@@ -7,17 +7,15 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>@</th>
                         <th>Books</th>
                         <th>Descriptions</th>
                         <th colspan="3">Handle</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Darr</td>
-                        <td>Darr</td>
+                    <tr v-for="post of posts">
+                        <td>{{post.title}}</td>
+                        <td>{{post.description}}</td>
                         <td>
                             <button class="btn btn-info">Details</button>
                         </td>
@@ -33,3 +31,37 @@
         </div>
     </div>
 </template>
+
+<script>
+    import axios from 'axios';
+
+    export default {
+        data() {
+            return {
+            posts: [],
+            errors: []
+            }
+        },
+
+        // Fetches posts when the component is created.
+        created() {
+            axios.get('/posts')
+            .then(response => {
+            // JSON responses are automatically parsed.
+            this.posts = response.data
+            })
+            .catch(e => {
+            this.errors.push(e)
+            })
+
+            // async / await version (created() becomes async created())
+            //
+            // try {
+            //   const response = await axios.get(`http://jsonplaceholder.typicode.com/posts`)
+            //   this.posts = response.data
+            // } catch (e) {
+            //   this.errors.push(e)
+            // }
+        }
+    }
+</script>
