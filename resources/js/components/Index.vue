@@ -8,9 +8,9 @@
                 <thead>
                     <tr>
                         <th>@</th>
-                        <th>Nama</th>
+                        <th>Books</th>
                         <th>Descriptions</th>
-                        <th>@</th>
+                        <th colspan="3">Handle</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -18,7 +18,15 @@
                         <td>1</td>
                         <td>Darr</td>
                         <td>Darr</td>
-                        <td>Darr</td>
+                        <td>
+                            <button class="btn btn-info">Details</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-success">Edit</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

@@ -37302,27 +37302,73 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _c(
-      "div",
-      { staticClass: "card-header" },
-      [
-        _c(
-          "router-link",
-          {
-            staticClass: "btn btn-primary float-right",
-            attrs: { to: "/create" }
-          },
-          [_vm._v("add book")]
-        )
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "card-body" })
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n                   Tambah Buku\n               ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("form", { attrs: { action: "" } }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-group" },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "btn btn-info", attrs: { to: "/" } },
+                    [_vm._v("back")]
+                  ),
+                  _vm._v(" "),
+                  _c("button", { staticClass: "btn btn-success" }, [
+                    _vm._v("Save")
+                  ])
+                ],
+                1
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "enter data..." }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: {
+          name: "",
+          id: "",
+          cols: "30",
+          rows: "10",
+          placeholder: "enter data..."
+        }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -37422,11 +37468,11 @@ var staticRenderFns = [
           _c("tr", [
             _c("th", [_vm._v("@")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Nama")]),
+            _c("th", [_vm._v("Books")]),
             _vm._v(" "),
             _c("th", [_vm._v("Descriptions")]),
             _vm._v(" "),
-            _c("th", [_vm._v("@")])
+            _c("th", { attrs: { colspan: "3" } }, [_vm._v("Handle")])
           ])
         ]),
         _vm._v(" "),
@@ -37438,7 +37484,19 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [_vm._v("Darr")]),
             _vm._v(" "),
-            _c("td", [_vm._v("Darr")])
+            _c("td", [
+              _c("button", { staticClass: "btn btn-info" }, [_vm._v("Details")])
+            ]),
+            _vm._v(" "),
+            _c("td", [
+              _c("button", { staticClass: "btn btn-success" }, [_vm._v("Edit")])
+            ]),
+            _vm._v(" "),
+            _c("td", [
+              _c("button", { staticClass: "btn btn-danger" }, [
+                _vm._v("Delete")
+              ])
+            ])
           ])
         ])
       ])

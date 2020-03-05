@@ -1,10 +1,27 @@
 <template>
-    <div class="card">
-        <div class="card-header">
-            <router-link to="/create" class="btn btn-primary float-right">add book</router-link>
-        </div>
-        <div class="card-body">
-           
-        </div>
+    <div class="container">
+       <div class="row justify-content-center">
+           <div class="col-md-12">
+               <div class="card">
+                   <div class="card-header">
+                       Tambah Buku
+                   </div>
+                   <div class="card-body">
+                       <form action="">
+                           <div class="form-group">
+                               <input type="text" placeholder="enter data..." class="form-control">
+                           </div>
+                           <div class="form-group">
+                               <textarea name="" id="" cols="30" rows="10" placeholder="enter data..." class="form-control"></textarea>
+                           </div>
+                           <div class="form-group">
+                                <router-link to="/" class="btn btn-info">back</router-link>
+                               <button class="btn btn-success">Save</button>
+                           </div>
+                       </form>
+                   </div>
+               </div>
+           </div>
+       </div>
     </div>
 </template>

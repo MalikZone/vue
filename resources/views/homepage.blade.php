@@ -7,10 +7,8 @@
             <div class="jumbotron">
                 <h1 class="display-4">Daftar Buku</h1>
                 <p>Data Buku</p>
-
-
                 <router-view></router-view>
-              </div>
+            </div>
         </div>
     </div>
 </div>
