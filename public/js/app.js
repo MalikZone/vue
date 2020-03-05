@@ -1954,8 +1954,14 @@ __webpack_require__.r(__webpack_exports__);
     submitPost: function submitPost() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://jsonplaceholder.typicode.com/posts").then(function (response) {
-        // JSON responses are automatically parsed.
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/posts', this.posts).then(function (response) {
+        console.log(response);
+
+        _this.$router.push({
+          path: '/'
+        }); // JSON responses are automatically parsed.
+
+
         _this.posts = response.data;
       })["catch"](function (e) {
         _this.errors.push(e);
@@ -37378,64 +37384,93 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("form", { attrs: { action: "" } }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "form-group" },
-                [
-                  _c(
-                    "router-link",
-                    { staticClass: "btn btn-info", attrs: { to: "/" } },
-                    [_vm._v("back")]
-                  ),
-                  _vm._v(" "),
-                  _c("button", { staticClass: "btn btn-success" }, [
-                    _vm._v("Save")
-                  ])
-                ],
-                1
-              )
-            ])
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    return _vm.submitPost()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.posts.title,
+                        expression: "posts.title"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "enter data..." },
+                    domProps: { value: _vm.posts.title },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.posts, "title", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.posts.description,
+                        expression: "posts.description"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      cols: "30",
+                      rows: "10",
+                      placeholder: "enter data..."
+                    },
+                    domProps: { value: _vm.posts.description },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.posts, "description", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "btn btn-info", attrs: { to: "/" } },
+                      [_vm._v("back")]
+                    ),
+                    _vm._v(" "),
+                    _c("button", { staticClass: "btn btn-success" }, [
+                      _vm._v("Save")
+                    ])
+                  ],
+                  1
+                )
+              ]
+            )
           ])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "enter data..." }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: {
-          name: "",
-          id: "",
-          cols: "30",
-          rows: "10",
-          placeholder: "enter data..."
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

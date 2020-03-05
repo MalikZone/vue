@@ -7,12 +7,12 @@
                        Tambah Buku
                    </div>
                    <div class="card-body">
-                       <form action="">
+                       <form v-on:submit="submitPost()">
                            <div class="form-group">
-                               <input type="text" placeholder="enter data..." class="form-control">
+                               <input type="text" v-model="posts.title" placeholder="enter data..." class="form-control">
                            </div>
                            <div class="form-group">
-                               <textarea name="" id="" cols="30" rows="10" placeholder="enter data..." class="form-control"></textarea>
+                               <textarea v-model="posts.description" cols="30" rows="10" placeholder="enter data..." class="form-control"></textarea>
                            </div>
                            <div class="form-group">
                                 <router-link to="/" class="btn btn-info">back</router-link>
@@ -34,7 +34,7 @@
             return {
                 posts: {
                     title: "",
-                    description: ""
+                    description: "",
                 },
                 errors: []
             }
@@ -43,8 +43,10 @@
         // Fetches posts when the component is created.
         methods:{
             submitPost(){
-                axios.get(`http://jsonplaceholder.typicode.com/posts`)
+                axios.post('/posts', this.posts)
                 .then(response => {
+                    console.log(response)
+                    this.$router.push({path:'/'})
                     // JSON responses are automatically parsed.
                     this.posts = response.data
                 })
