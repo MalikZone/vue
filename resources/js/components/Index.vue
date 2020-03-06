@@ -13,17 +13,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="post of posts">
+                    <tr v-for="post, index of posts">
                         <td>{{post.title}}</td>
                         <td>{{post.description}}</td>
                         <td>
-                            <button class="btn btn-info">Details</button>
+                            <router-link :to="{name: 'readPost', params:{id:post.id}}" class="btn btn-info">Details</router-link>
                         </td>
                         <td>
-                            <button class="btn btn-success">Edit</button>
+                            <router-link :to="{name: 'editPost', params:{id:post.id}}" class="btn btn-success">Edit</router-link>
                         </td>
                         <td>
-                            <button class="btn btn-danger">Delete</button>
+                            <button type="submit" v-on:click="submitPostDelete(post.id, index)" class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -62,6 +62,23 @@
             // } catch (e) {
             //   this.errors.push(e)
             // }
-        }
+        },
+
+         methods:{
+            submitPostDelete(id, index){
+                if (confirm("delete data ?")) {
+                    axios.delete('/posts/' + id)
+                    .then(response => {
+                        console.log(response)
+                        // JSON responses are automatically parsed.
+                        this.posts.splice(index, 1)
+                    })
+                    .catch(e => {
+                        this.errors.push(e)
+                    })   
+                }
+            }
+        },
+
     }
 </script>
